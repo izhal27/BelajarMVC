@@ -41,7 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBaseController.cs" />
+    <Compile Include="PemainController.cs" />
+    <Compile Include="PosisiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BelajarMVC.Model\BelajarMVC.Model.csproj">
+      <Project>{ba0a876f-82df-45dc-a2ce-f67f24e30605}</Project>
+      <Name>BelajarMVC.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
