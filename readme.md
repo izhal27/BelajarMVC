@@ -1,4 +1,4 @@
-# Project Title
+# BelajarMVC
 
 Project pembelajaran C# menggunakan MVC pattern
 
