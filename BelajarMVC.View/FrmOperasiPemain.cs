@@ -74,6 +74,7 @@ namespace BelajarMVC.View
             {
                Message.Info("Pemain berhasil ditambahkan.");
                ClearControls(this);
+               cmbPosisi.SelectedIndex = -1;
                Listener.OK();
             }
             else

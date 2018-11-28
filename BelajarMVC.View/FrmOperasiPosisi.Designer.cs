@@ -61,7 +61,7 @@
          this.btnCancel.Location = new System.Drawing.Point(155, 158);
          this.btnCancel.Name = "btnCancel";
          this.btnCancel.Size = new System.Drawing.Size(75, 23);
-         this.btnCancel.TabIndex = 1;
+         this.btnCancel.TabIndex = 10;
          this.btnCancel.Text = "Cancel";
          this.btnCancel.UseVisualStyleBackColor = true;
          // 
@@ -70,7 +70,7 @@
          this.btnOperasi.Location = new System.Drawing.Point(74, 158);
          this.btnOperasi.Name = "btnOperasi";
          this.btnOperasi.Size = new System.Drawing.Size(75, 23);
-         this.btnOperasi.TabIndex = 1;
+         this.btnOperasi.TabIndex = 3;
          this.btnOperasi.Text = "Operasi";
          this.btnOperasi.UseVisualStyleBackColor = true;
          // 
@@ -129,7 +129,7 @@
          this.rtbKeterangan.MaxLength = 100;
          this.rtbKeterangan.Name = "rtbKeterangan";
          this.rtbKeterangan.Size = new System.Drawing.Size(200, 96);
-         this.rtbKeterangan.TabIndex = 4;
+         this.rtbKeterangan.TabIndex = 2;
          this.rtbKeterangan.Text = "";
          // 
          // FrmOperasiPosisi
