@@ -19,7 +19,7 @@ namespace BelajarMVC.UnitTest
       [TestMethod]
       public void TestKoneksi()
       {
-         var conn = _context.DB;
+         var conn = _context.Conn;
 
          Assert.IsNotNull(conn);
          Assert.IsTrue(conn.State == ConnectionState.Open);

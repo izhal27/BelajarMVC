@@ -16,7 +16,16 @@ namespace BelajarMVC.Controller
 
    public class PosisiController : IPosisiController
    {
+
+      #region >> Fields <<
+
       private IPosisiRepository _repository;
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Methods <<
 
       public IList<Posisi> GetAll()
       {
@@ -110,6 +119,8 @@ namespace BelajarMVC.Controller
 
          return false;
       }
+
+      #endregion
 
    }
 }

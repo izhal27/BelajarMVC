@@ -18,30 +18,59 @@ namespace BelajarMVC.Model.Repository
 
    public class PemainRepository : IPemainRepository
    {
+
+      #region >> Fields <<
+
       private IDbContext _context;
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Constructor <<
 
       public PemainRepository(IDbContext context)
       {
          _context = context;
       }
-      
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Methods <<
+
       public IList<Pemain> GetAll()
       {
-         var listPosisi = _context.DB.GetAll<Pemain>().ToList();
+         var sql = "SELECT pemain.id, pemain.nama, pemain.negara, pemain.keterangan, "
+            + "pemain.posisi_id, posisi.nama "
+            + "FROM pemain INNER JOIN posisi ON pemain.posisi_id = posisi.id ORDER BY pemain.nama ASC";
+
+         var listPosisi = _context.Conn
+            .Query<Pemain, Posisi, Pemain>(sql, (pemain, posisi) =>
+            {
+               if (posisi != null)
+               {
+                  pemain.posisi = posisi.nama;
+               }
+
+               return pemain;
+            }, splitOn: "posisi_id")
+            .ToList();
 
          return listPosisi;
       }
 
       public Pemain GetByID(int id)
       {
-         Pemain obj = _context.DB.Get<Pemain>(id);
+         Pemain obj = _context.Conn.Get<Pemain>(id);
 
          return obj;
       }
 
       public Pemain GetByNama(string nama)
       {
-         Pemain obj = _context.DB
+         Pemain obj = _context.Conn
             .Query<Pemain>("SELECT * FROM pemain WHERE nama = @nama", new { nama = nama })
             .FirstOrDefault();
 
@@ -50,24 +79,53 @@ namespace BelajarMVC.Model.Repository
 
       public int Save(Pemain obj)
       {
-         var result = (int)_context.DB.Insert(obj);
+         var result = 0;
+
+         try
+         {
+            result = (int)_context.Conn.Insert(obj);
+         }
+         catch
+         {
+            return result;
+         }
 
          return result;
       }
 
       public int Update(Pemain obj)
       {
-         var result = _context.DB.Update(obj) ? 1 : 0;
+         var result = 0;
+
+         try
+         {
+            result = _context.Conn.Update(obj) ? 1 : 0;
+         }
+         catch
+         {
+            return result;
+         }
 
          return result;
       }
 
       public int Delete(Pemain obj)
       {
-         var result = _context.DB.Delete(obj) ? 1 : 0;
+         var result = 0;
+
+         try
+         {
+            result = _context.Conn.Delete(obj) ? 1 : 0;
+         }
+         catch
+         {
+            return result;
+         }
 
          return result;
       }
+
+      #endregion
 
    }
 }

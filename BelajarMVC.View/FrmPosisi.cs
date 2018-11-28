@@ -14,24 +14,24 @@ using Helper;
 
 namespace BelajarMVC.View
 {
-   public partial class FrmMain : Form, IListener
+   public partial class FrmPosisi : Form, IListener
    {
 
       #region >> Fields <<
 
-      private IPemainController _controller;
-      private BindingListView<Pemain> _view;
+      private IPosisiController _controller;
+      private BindingListView<Posisi> _view;
 
       #endregion
-
-      // ----------------------------------------------------------------------//
       
+      // ----------------------------------------------------------------------//
+
       #region >> Constructor <<
 
-      public FrmMain()
+      public FrmPosisi()
       {
          InitializeComponent();
-         _controller = new PemainController();
+         _controller = new PosisiController();
          LoadData();
       }
 
@@ -41,14 +41,9 @@ namespace BelajarMVC.View
 
       #region >> EventHandler Methods <<
 
-      private void dgvPemain_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-      {
-         btnUbah_Click(null, null);
-      }
-
       private void btnTambah_Click(object sender, EventArgs e)
       {
-         var frm = new FrmOperasiPemain();
+         var frm = new FrmOperasiPosisi();
          frm.Listener = this;
          frm.ShowDialog();
       }
@@ -56,7 +51,7 @@ namespace BelajarMVC.View
       private void btnUbah_Click(object sender, EventArgs e)
       {
          var id = GetID();
-         var frm = new FrmOperasiPemain(id);
+         var frm = new FrmOperasiPosisi(id);
          if (frm.ShowDialog() == DialogResult.OK) LoadData();
       }
 
@@ -65,7 +60,7 @@ namespace BelajarMVC.View
          if (Message.Question("Anda yakin ingin menghapus data terpilih ?"))
          {
             var id = GetID();
-            var result = _controller.Delete(new Pemain { id = id });
+            var result = _controller.Delete(new Posisi { id = id });
 
             if (result > 0)
             {
@@ -74,19 +69,10 @@ namespace BelajarMVC.View
             }
             else
             {
-               Message.Warning("Terjadi kesalahan saat melakukan operasi.");
+               Message.Warning("Terjadi kesalahan saat melakukan operasi.\n"
+                  + "Kemungkinan data sudah terpakai pada data 'Pemain'.");
             }
          }
-      }
-
-      private void btnDataPosisi_Click(object sender, EventArgs e)
-      {
-         new FrmPosisi().ShowDialog();
-      }
-
-      private void btClose_Click(object sender, EventArgs e)
-      {
-         Close();
       }
 
       #endregion
@@ -99,14 +85,14 @@ namespace BelajarMVC.View
       {
          try
          {
-            var listOfPemain = _controller.GetAll();
-            _view = new BindingListView<Pemain>(listOfPemain.ToList());
-            dgvPemain.DataSource = _view;
-            if (dgvPemain.DataSource != null) dgvPemain.Columns[0].Visible = false; // id
+            var listOfPosisi = _controller.GetAll();
+            _view = new BindingListView<Posisi>(listOfPosisi.ToList());
+            dgvPosisi.DataSource = _view;
+            if (dgvPosisi.DataSource != null) dgvPosisi.Columns[0].Visible = false; // id
          }
          catch (Exception ex)
          {
-            MessageBox.Show(ex.Message);
+            Message.Error(ex.Message);
          }
       }
 
@@ -117,9 +103,9 @@ namespace BelajarMVC.View
 
       private int GetID()
       {
-         if (dgvPemain.SelectedRows != null)
+         if (dgvPosisi.SelectedRows != null)
          {
-            return (int)dgvPemain.Rows[dgvPemain.CurrentRow.Index].Cells[0].Value;
+            return (int)dgvPosisi.Rows[dgvPosisi.CurrentRow.Index].Cells[0].Value;
          }
 
          return 0;
@@ -127,5 +113,9 @@ namespace BelajarMVC.View
 
       #endregion
 
+      private void dgvPosisi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+      {
+         btnUbah_Click(null, null);
+      }
    }
 }

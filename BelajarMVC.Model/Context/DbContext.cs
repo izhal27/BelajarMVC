@@ -10,7 +10,7 @@ namespace BelajarMVC.Model.Context
 {
    public interface IDbContext : IDisposable
    {
-      IDbConnection DB { get; }
+      IDbConnection Conn { get; }
    }
 
    public class DbContext : IDbContext
@@ -23,7 +23,7 @@ namespace BelajarMVC.Model.Context
          _connString = "server=localhost;database=csmvc;uid=root;pwd=master";
       }
 
-      public IDbConnection DB
+      public IDbConnection Conn
       {
          get
          {

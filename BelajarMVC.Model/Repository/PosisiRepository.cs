@@ -18,30 +18,45 @@ namespace BelajarMVC.Model.Repository
 
    public class PosisiRepository : IPosisiRepository
    {
+
+      #region >> Fields <<
+
       private IDbContext _context;
+
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Constructor <<
 
       public PosisiRepository(IDbContext context)
       {
          _context = context;
       }
 
+      #endregion
+
+      // ----------------------------------------------------------------------//
+
+      #region >> Methods <<
+
       public IList<Posisi> GetAll()
       {
-         var listPosisi = _context.DB.GetAll<Posisi>().ToList();         
+         var listPosisi = _context.Conn.Query<Posisi>("SELECT * FROM posisi ORDER BY nama ASC").ToList();
 
          return listPosisi;
       }
 
       public Posisi GetByID(int id)
       {
-         Posisi obj = _context.DB.Get<Posisi>(id);
+         Posisi obj = _context.Conn.Get<Posisi>(id);
 
          return obj;
       }
 
       public Posisi GetByNama(string nama)
       {
-         Posisi obj = _context.DB
+         Posisi obj = _context.Conn
             .Query<Posisi>("SELECT * FROM posisi WHERE nama = @nama", new { nama = nama })
             .FirstOrDefault();
 
@@ -50,24 +65,53 @@ namespace BelajarMVC.Model.Repository
 
       public int Save(Posisi obj)
       {
-         var result = (int)_context.DB.Insert(obj);
+         var result = 0;
+
+         try
+         {
+            result = (int)_context.Conn.Insert(obj);
+         }
+         catch
+         {
+            return result;
+         }
 
          return result;
       }
 
       public int Update(Posisi obj)
       {
-         var result = _context.DB.Update(obj) ? 1 : 0;
+         var result = 0;
+
+         try
+         {
+            result = _context.Conn.Update(obj) ? 1 : 0;
+         }
+         catch
+         {
+            return result;
+         }
 
          return result;
       }
 
       public int Delete(Posisi obj)
       {
-         var result = _context.DB.Delete(obj) ? 1 : 0;
+         var result = 0;
+
+         try
+         {
+            result = _context.Conn.Delete(obj) ? 1 : 0;
+         }
+         catch
+         {
+            return result;
+         }
 
          return result;
       }
+
+      #endregion
 
    }
 }

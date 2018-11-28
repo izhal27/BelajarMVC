@@ -51,14 +51,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Helper\Message.cs">
+      <Link>Message.cs</Link>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOperasiPosisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOperasiPosisi.Designer.cs">
+      <DependentUpon>FrmOperasiPosisi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOperasiPemain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOperasiPemain.Designer.cs">
+      <DependentUpon>FrmOperasiPemain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPosisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPosisi.Designer.cs">
+      <DependentUpon>FrmPosisi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOperasiPosisi.resx">
+      <DependentUpon>FrmOperasiPosisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOperasiPemain.resx">
+      <DependentUpon>FrmOperasiPemain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPosisi.resx">
+      <DependentUpon>FrmPosisi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,6 +115,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BelajarMVC.Controller\BelajarMVC.Controller.csproj">
+      <Project>{1741ab7a-5d89-497d-a792-0696c06a4245}</Project>
+      <Name>BelajarMVC.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BelajarMVC.Model\BelajarMVC.Model.csproj">
+      <Project>{ba0a876f-82df-45dc-a2ce-f67f24e30605}</Project>
+      <Name>BelajarMVC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{a1baf1e7-e944-4abe-9dc6-635b4b05a127}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
