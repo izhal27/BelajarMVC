@@ -41,6 +41,11 @@ namespace BelajarMVC.View
 
       #region >> EventHandler Methods <<
 
+      private void dgvPosisi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+      {
+         btnUbah_Click(null, null);
+      }
+
       private void btnTambah_Click(object sender, EventArgs e)
       {
          var frm = new FrmOperasiPosisi();
@@ -113,9 +118,5 @@ namespace BelajarMVC.View
 
       #endregion
 
-      private void dgvPosisi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-      {
-         btnUbah_Click(null, null);
-      }
    }
 }

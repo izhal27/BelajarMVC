@@ -185,11 +185,13 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(329, 270);
          this.Controls.Add(this.groupBox1);
+         this.KeyPreview = true;
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "FrmOperasiPemain";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Operasi Pemain";
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmOperasiPemain_KeyDown);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();

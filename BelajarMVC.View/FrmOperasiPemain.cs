@@ -26,31 +26,17 @@ namespace BelajarMVC.View
       #endregion
 
       // ----------------------------------------------------------------------//
-
-      #region >> Properties <<
-
-
-      #endregion
-
-      // ----------------------------------------------------------------------//
-
+      
       #region >> Constructor <<
 
-      public FrmOperasiPemain()
-      {
-         InitializeComponent();
-         _pemainController = new PemainController();
-         _posisiController = new PosisiController();
-         SetControls();
-      }
-
-      public FrmOperasiPemain(int id)
+      public FrmOperasiPemain(int id = 0)
       {
          InitializeComponent();
          _pemainController = new PemainController();
          _posisiController = new PosisiController();
          _id = id;
-         SetControls(true, id);
+         var isEdited = _id != 0;
+         SetControls(isEdited, id);
       }
 
       #endregion
@@ -58,7 +44,6 @@ namespace BelajarMVC.View
       // ----------------------------------------------------------------------//
 
       #region >> EventHandler Methods <<
-
 
       private void Tambah_Click(object sender, EventArgs e)
       {
@@ -121,7 +106,7 @@ namespace BelajarMVC.View
             // Ubah data
             case true:
 
-               Text = "Ubah Pemain";
+               Text = "UBAH PEMAIN";
                btnOperasi.Text = "&Simpan";
                btnOperasi.Click += Simpan_Click;
 
@@ -129,7 +114,7 @@ namespace BelajarMVC.View
             // Tambah data
             default:
 
-               Text = "Tambah Pemain";
+               Text = "TAMBAH PEMAIN";
                btnOperasi.Text = "&Tambah";
                btnOperasi.Click += Tambah_Click;
 
@@ -234,5 +219,9 @@ namespace BelajarMVC.View
 
       #endregion
 
+      private void FrmOperasiPemain_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Escape) Close();
+      }
    }
 }

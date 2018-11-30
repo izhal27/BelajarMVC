@@ -138,11 +138,13 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(329, 214);
          this.Controls.Add(this.groupBox1);
+         this.KeyPreview = true;
          this.MaximizeBox = false;
          this.MinimizeBox = false;
          this.Name = "FrmOperasiPosisi";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Operasi Posisi";
+         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmOperasiPosisi_KeyDown);
          this.groupBox1.ResumeLayout(false);
          this.tableLayoutPanel1.ResumeLayout(false);
          this.tableLayoutPanel1.PerformLayout();

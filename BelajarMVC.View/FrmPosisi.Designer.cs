@@ -47,6 +47,7 @@
          this.dgvPosisi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
          this.dgvPosisi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.dgvPosisi.Location = new System.Drawing.Point(12, 12);
+         this.dgvPosisi.MultiSelect = false;
          this.dgvPosisi.Name = "dgvPosisi";
          this.dgvPosisi.ReadOnly = true;
          this.dgvPosisi.Size = new System.Drawing.Size(710, 326);

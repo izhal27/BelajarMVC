@@ -28,19 +28,13 @@ namespace BelajarMVC.View
 
       #region >> Constructor <<
 
-      public FrmOperasiPosisi()
-      {
-         InitializeComponent();
-         _posisiController = new PosisiController();
-         SetControls();
-      }
-
-      public FrmOperasiPosisi(int id)
+      public FrmOperasiPosisi(int id = 0)
       {
          InitializeComponent();
          _posisiController = new PosisiController();
          _id = id;
-         SetControls(true, id);
+         var isEdited = _id != 0;
+         SetControls(isEdited, id);
       }
 
       #endregion
@@ -95,7 +89,12 @@ namespace BelajarMVC.View
             }
          }
       }
-      
+
+      private void FrmOperasiPosisi_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Escape) Close();
+      }
+
       #endregion
 
       // ----------------------------------------------------------------------//
@@ -109,7 +108,7 @@ namespace BelajarMVC.View
             // Ubah data
             case true:
 
-               Text = "Ubah Posisi";
+               Text = "UBAH POSISI";
                btnOperasi.Text = "&Simpan";
                btnOperasi.Click += Simpan_Click;
 
@@ -117,7 +116,7 @@ namespace BelajarMVC.View
             // Tambah data
             default:
 
-               Text = "Tambah Posisi";
+               Text = "TAMBAH POSISI";
                btnOperasi.Text = "&Tambah";
                btnOperasi.Click += Tambah_Click;
 
@@ -198,6 +197,6 @@ namespace BelajarMVC.View
       }
 
       #endregion
-
+      
    }
 }

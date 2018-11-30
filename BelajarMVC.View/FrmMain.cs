@@ -74,7 +74,7 @@ namespace BelajarMVC.View
             }
             else
             {
-               Message.Warning("Terjadi kesalahan saat melakukan operasi.");
+               Message.ErrorMessage();
             }
          }
       }

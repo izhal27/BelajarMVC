@@ -48,6 +48,7 @@
          this.dgvPemain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
          this.dgvPemain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
          this.dgvPemain.Location = new System.Drawing.Point(12, 12);
+         this.dgvPemain.MultiSelect = false;
          this.dgvPemain.Name = "dgvPemain";
          this.dgvPemain.ReadOnly = true;
          this.dgvPemain.Size = new System.Drawing.Size(629, 394);
