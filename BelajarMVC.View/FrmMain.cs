@@ -11,6 +11,8 @@ using Equin.ApplicationFramework;
 using BelajarMVC.Model.Entity;
 using BelajarMVC.Controller;
 using Helper;
+using MySql.Data.MySqlClient;
+using BelajarMVC.Model.Context;
 
 namespace BelajarMVC.View
 {
@@ -25,7 +27,7 @@ namespace BelajarMVC.View
       #endregion
 
       // ----------------------------------------------------------------------//
-      
+
       #region >> Constructor <<
 
       public FrmMain()
@@ -40,6 +42,52 @@ namespace BelajarMVC.View
       // ----------------------------------------------------------------------//
 
       #region >> EventHandler Methods <<
+
+      private void btnBackupDatabase_Click(object sender, EventArgs e)
+      {
+         try
+         {
+            using (IDbContext context = new DbContext())
+            {
+               using (MySqlBackup mb = new MySqlBackup())
+               {
+                  mb.Command = (MySqlCommand)context.Conn.CreateCommand();
+                  mb.ExportToFile(Environment.CurrentDirectory + "\\backup.sql");
+                  MessageBox.Show("Backup database berhasil.");
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show(ex.Message);
+         }
+      }
+
+      private void btnRestoreDatabase_Click(object sender, EventArgs e)
+      {
+         try
+         {
+            var openShowDialog = new OpenFileDialog();
+
+            if (openShowDialog.ShowDialog() == DialogResult.OK)
+            {
+               using (IDbContext context = new DbContext())
+               {
+                  using (MySqlBackup mb = new MySqlBackup())
+                  {
+                     mb.Command = (MySqlCommand)context.Conn.CreateCommand();
+                     mb.ImportFromFile(openShowDialog.FileName);
+                     MessageBox.Show("Restore database berhasil.");
+                     LoadData();
+                  }
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show(ex.Message);
+         }
+      }
 
       private void dgvPemain_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
       {

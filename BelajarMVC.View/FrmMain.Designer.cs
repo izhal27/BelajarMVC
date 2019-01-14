@@ -35,6 +35,8 @@
          this.btnHapus = new System.Windows.Forms.Button();
          this.btnUbah = new System.Windows.Forms.Button();
          this.btnTambah = new System.Windows.Forms.Button();
+         this.btnBackupDatabase = new System.Windows.Forms.Button();
+         this.btnRestoreDatabase = new System.Windows.Forms.Button();
          ((System.ComponentModel.ISupportInitialize)(this.dgvPemain)).BeginInit();
          this.groupBox1.SuspendLayout();
          this.SuspendLayout();
@@ -47,11 +49,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
          this.dgvPemain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
          this.dgvPemain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-         this.dgvPemain.Location = new System.Drawing.Point(12, 12);
+         this.dgvPemain.Location = new System.Drawing.Point(12, 41);
          this.dgvPemain.MultiSelect = false;
          this.dgvPemain.Name = "dgvPemain";
          this.dgvPemain.ReadOnly = true;
-         this.dgvPemain.Size = new System.Drawing.Size(629, 394);
+         this.dgvPemain.Size = new System.Drawing.Size(629, 365);
          this.dgvPemain.TabIndex = 0;
          this.dgvPemain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPemain_CellDoubleClick);
          // 
@@ -122,11 +124,35 @@
          this.btnTambah.UseVisualStyleBackColor = true;
          this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
          // 
+         // btnBackupDatabase
+         // 
+         this.btnBackupDatabase.Location = new System.Drawing.Point(12, 12);
+         this.btnBackupDatabase.Name = "btnBackupDatabase";
+         this.btnBackupDatabase.Size = new System.Drawing.Size(120, 23);
+         this.btnBackupDatabase.TabIndex = 2;
+         this.btnBackupDatabase.TabStop = false;
+         this.btnBackupDatabase.Text = "&Backup Database";
+         this.btnBackupDatabase.UseVisualStyleBackColor = true;
+         this.btnBackupDatabase.Click += new System.EventHandler(this.btnBackupDatabase_Click);
+         // 
+         // btnRestoreDatabase
+         // 
+         this.btnRestoreDatabase.Location = new System.Drawing.Point(138, 12);
+         this.btnRestoreDatabase.Name = "btnRestoreDatabase";
+         this.btnRestoreDatabase.Size = new System.Drawing.Size(120, 23);
+         this.btnRestoreDatabase.TabIndex = 2;
+         this.btnRestoreDatabase.TabStop = false;
+         this.btnRestoreDatabase.Text = "&RestoreDatabase";
+         this.btnRestoreDatabase.UseVisualStyleBackColor = true;
+         this.btnRestoreDatabase.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+         // 
          // FrmMain
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(653, 472);
+         this.Controls.Add(this.btnRestoreDatabase);
+         this.Controls.Add(this.btnBackupDatabase);
          this.Controls.Add(this.groupBox1);
          this.Controls.Add(this.dgvPemain);
          this.Name = "FrmMain";
@@ -148,6 +174,8 @@
       private System.Windows.Forms.Button btnHapus;
       private System.Windows.Forms.Button btnUbah;
       private System.Windows.Forms.Button btnTambah;
+      private System.Windows.Forms.Button btnBackupDatabase;
+      private System.Windows.Forms.Button btnRestoreDatabase;
    }
 }
 
